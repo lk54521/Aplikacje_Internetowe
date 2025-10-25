@@ -19,7 +19,6 @@ document.addEventListener("DOMContentLoaded", function () {
       this.initAddTask();
     }
 
-    // --- Pomocnicze / walidacja ---
     todayYMD() {
       const d = new Date();
       const y = d.getFullYear();
@@ -49,7 +48,6 @@ document.addEventListener("DOMContentLoaded", function () {
       } catch (e) { console.warn("localStorage odczyt:", e); }
     }
 
-    // --- Wyszukiwarka (≥2 znaki) ---
     bindSearch() {
       if (!this.searchInput) return;
       this.searchInput.addEventListener("input", () => {
@@ -67,7 +65,6 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     }
 
-    // --- Rysowanie listy ---
     draw() {
       this.lista.innerHTML = "";
       const q = this.term.trim();
@@ -146,7 +143,6 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     }
 
-    // --- Edycja inline + klik poza = zapis ---
     startInlineEdit(index) {
       if (this.editingIndex === index) return;
       this.editingIndex = index;
@@ -184,7 +180,6 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }
 
-    // --- CRUD ---
     addTask(text, date) {
       if (!this.validateText(text)) { alert("Tekst 3–255 znaków."); return; }
       if (!this.isValidFutureDateOrEmpty(date)) { alert("Data pusta albo w przyszłości."); return; }
