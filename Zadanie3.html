@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mapa puzzle</title>
+
+  <link rel="stylesheet" href="Wyglad.css">
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet-image/leaflet-image.js"></script>
+  
+</head>
+
+<body>
+
+  <div class="main-layout">
+
+
+    <div class="left-panel">
+      <div id="map"></div>
+
+      <div class="guziczki">
+        <button onclick="getLocation()">Moja lokalizacja</button>
+        <button onclick="saveAndCreatePuzzle()">Pobierz mapę</button>
+      </div>
+    </div>
+
+    <div class="right-panel">
+      <div id="target-grid"></div>
+    </div>
+    
+  </div>
+  
+  <div id="puzzle-container"></div>
+
+<script src="Kodzik.js"></script>
+
+</body>
+
+</html>
