@@ -1,0 +1,73 @@
+body {
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    background-color: skyblue;
+  }
+  
+#weather-results-container {
+  display: none;
+  width: 350px;
+  margin: 15px auto;
+  text-align: center;
+  }
+
+#weather-search-params {
+  color:aliceblue;
+  width: 350px;
+  margin: 15px auto;
+  text-align: center;
+}
+  
+.weather-block {
+  background-color: lightgreen;
+  display: block;
+  width: 350px;
+  height: 120px;
+  border: 1px solid darkgreen;
+  position: relative;
+  margin: 15px auto;
+  text-align: left;
+}
+
+.weather-date {
+  font-weight: bold;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  font-size: 20px;
+}
+
+.weather-icon {
+    position: absolute;
+    top: 20px;
+    left: 0;
+    width: 100px;
+    height: 100px;
+}
+
+.weather-temperature {
+  position: absolute;
+  top: 30px;
+  left: 110px;
+  font-size: 33px;
+  font-weight: bold;
+}
+
+.weather-temperature-feels-like {
+  position: absolute;
+  top: 70px;
+  left: 110px;
+}
+
+.weather-description {
+  position: absolute;
+  top: 90px;
+  left: 110px;
+}
+
+.weather-city {
+  text-align: left;
+  font-size: 20px;
+  font-weight: bold;
+  padding-left: 10px;
+  margin-top: 4px;  
+}
