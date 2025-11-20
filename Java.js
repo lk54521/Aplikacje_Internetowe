@@ -180,7 +180,6 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }
 
-    // --- CRUD ---
     addTask(text, date) {
       if (!this.validateText(text)) { alert("Tekst 3–255 znaków."); return; }
       if (!this.isValidFutureDateOrEmpty(date)) { alert("Data pusta albo w przyszłości."); return; }
