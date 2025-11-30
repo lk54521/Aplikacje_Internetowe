@@ -1,47 +1,107 @@
 <?php
+
 require_once __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'autoload.php';
 
-$config = new \App\Service\Config();
+use App\Service\Config;
+use App\Service\Templating;
+use App\Service\Router;
 
-$templating = new \App\Service\Templating();
-$router = new \App\Service\Router();
+use App\Controller\PostController;
+use App\Controller\CategoryController;
+
+$config = new Config();
+
+$templating = new Templating();
+$router = new Router();
 
 $action = $_REQUEST['action'] ?? null;
+
 switch ($action) {
+
     case 'post-index':
     case null:
-        $controller = new \App\Controller\PostController();
+        $controller = new PostController();
         $view = $controller->indexAction($templating, $router);
         break;
+
     case 'post-create':
-        $controller = new \App\Controller\PostController();
+        $controller = new PostController();
         $view = $controller->createAction($_REQUEST['post'] ?? null, $templating, $router);
         break;
+
     case 'post-edit':
-        if (! $_REQUEST['id']) {
+        if (!isset($_REQUEST['id'])) {
             break;
         }
-        $controller = new \App\Controller\PostController();
-        $view = $controller->editAction($_REQUEST['id'], $_REQUEST['post'] ?? null, $templating, $router);
+        $controller = new PostController();
+        $view = $controller->editAction(
+            (int) $_REQUEST['id'],
+            $_REQUEST['post'] ?? null,
+            $templating,
+            $router
+        );
         break;
+
     case 'post-show':
-        if (! $_REQUEST['id']) {
+        if (!isset($_REQUEST['id'])) {
             break;
         }
-        $controller = new \App\Controller\PostController();
-        $view = $controller->showAction($_REQUEST['id'], $templating, $router);
+        $controller = new PostController();
+        $view = $controller->showAction((int) $_REQUEST['id'], $templating, $router);
         break;
+
     case 'post-delete':
-        if (! $_REQUEST['id']) {
+        if (!isset($_REQUEST['id'])) {
             break;
         }
-        $controller = new \App\Controller\PostController();
-        $view = $controller->deleteAction($_REQUEST['id'], $router);
+        $controller = new PostController();
+        $view = $controller->deleteAction((int) $_REQUEST['id'], $router);
         break;
+
+    case 'category-index':
+        $controller = new CategoryController();
+        $view = $controller->indexAction($templating, $router);
+        break;
+
+    case 'category-show':
+        if (!isset($_REQUEST['id'])) {
+            break;
+        }
+        $controller = new CategoryController();
+        $view = $controller->showAction((int) $_REQUEST['id'], $templating, $router);
+        break;
+
+    case 'category-create':
+        $controller = new CategoryController();
+        $view = $controller->createAction($_REQUEST['category'] ?? null, $templating, $router);
+        break;
+
+    case 'category-edit':
+        if (!isset($_REQUEST['id'])) {
+            break;
+        }
+        $controller = new CategoryController();
+        $view = $controller->editAction(
+            (int) $_REQUEST['id'],
+            $_REQUEST['category'] ?? null,
+            $templating,
+            $router
+        );
+        break;
+
+    case 'category-delete':
+        if (!isset($_REQUEST['id'])) {
+            break;
+        }
+        $controller = new CategoryController();
+        $view = $controller->deleteAction((int) $_REQUEST['id'], $router);
+        break;
+
     case 'info':
         $controller = new \App\Controller\InfoController();
         $view = $controller->infoAction();
         break;
+
     default:
         $view = 'Not found';
         break;
